@@ -15,14 +15,3 @@
 
 // waluigi model
 #include "waluigi/model.inc.c"
-
-//
-
-// sonic
-#include "sonic/model.inc.c"
-
-// tails
-#include "tails/model.inc.c"
-
-// peach
-#include "peachPlayer/model.inc.c"

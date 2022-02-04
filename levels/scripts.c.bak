@@ -136,27 +136,6 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_WALUIGIS_WING_CAP,         waluigis_wing_cap_geo),
     LOAD_MODEL_FROM_GEO(MODEL_WALUIGIS_WINGED_METAL_CAP, waluigis_winged_metal_cap_geo),
 
-///
-
-		//Sonic
-	LOAD_MODEL_FROM_GEO(MODEL_SONIC,                  sonic_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_SONICS_CAP,             luigis_cap_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_SONICS_METAL_CAP,       luigis_metal_cap_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_SONICS_WING_CAP,        luigis_wing_cap_geo),
-	
-		//Tails
-	LOAD_MODEL_FROM_GEO(MODEL_TAILS,                  tails_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_TAILSS_CAP,             luigis_cap_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_TAILSS_METAL_CAP,       luigis_metal_cap_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_TAILSS_WING_CAP,        luigis_wing_cap_geo),
-	
-		//Peach
-	LOAD_MODEL_FROM_GEO(MODEL_PEACHPLAYER,                  peachPlayer_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_PEACHPLAYER_CAP,             luigis_cap_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_PEACHPLAYER_METAL_CAP,       luigis_metal_cap_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_PEACHPLAYER_WING_CAP,        luigis_wing_cap_geo),
-
-
     // CUSTOM MODELS END
 
     FREE_LEVEL_POOL(),

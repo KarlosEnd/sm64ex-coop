@@ -606,24 +606,4 @@
 #define MODEL_WALUIGIS_WING_CAP           0xEF // waluigis_wing_cap_geo
 #define MODEL_WALUIGIS_WINGED_METAL_CAP   0xF0 // waluigis_winged_metal_cap_geo
 
-///////////
-
-#define MODEL_SONIC                     0xF1 // sonic_geo
-#define MODEL_SONICS_CAP                0xF2 // sonic_geos_cap_geo
-#define MODEL_SONICS_METAL_CAP          0xF3 // sonic_geos_metal_cap_geo
-#define MODEL_SONICS_WING_CAP           0xF4 // sonic_geos_wing_cap_geo
-
-//Tails
-#define MODEL_TAILS                     0xF5 // sonic_geo
-#define MODEL_TAILSS_CAP                0xF6 // sonic_geos_cap_geo
-#define MODEL_TAILSS_METAL_CAP          0xF7 // sonic_geos_metal_cap_geo
-#define MODEL_TAILSS_WING_CAP           0xF8 // sonic_geos_wing_cap_geo
-
-//Peach
-#define MODEL_PEACHPLAYER                     0xF9 // sonic_geo
-#define MODEL_PEACHPLAYER_CAP                0xFA // sonic_geos_cap_geo
-#define MODEL_PEACHPLAYER_METAL_CAP          0xFB // sonic_geos_metal_cap_geo
-#define MODEL_PEACHPLAYER_WING_CAP           0xFC // sonic_geos_wing_cap_geo
-
-
 #endif // MODEL_IDS_H

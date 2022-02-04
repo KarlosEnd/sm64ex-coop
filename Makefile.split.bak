@@ -79,18 +79,6 @@ ZCUSTOM_DIRS += toad_player
 CUSTOM_DIRS += waluigi_cap
 ZCUSTOM_DIRS += waluigi
 
-# Add Sonic
-# CUSTOM_DIRS += sonic_cap
-ZCUSTOM_DIRS += sonic
-
-# Add Tails
-# CUSTOM_DIRS += tails_cap
-ZCUSTOM_DIRS += tails
-
-# Add PeachPlayer
-# CUSTOM_DIRS += peachPlayer_cap
-ZCUSTOM_DIRS += peachPlayer
-
 # Actor Files
 CUSTOM_FILES                 := $(foreach dir,$(addprefix $(ACTOR_DIR)/,$(CUSTOM_DIRS)),$(patsubst %.png,%.inc.c,$(wildcard $(dir)/*.png)))
 AMP_CHUCKYA_FILES            := $(foreach dir,$(addprefix $(ACTOR_DIR)/,$(AMP_DIRS)),$(patsubst %.png,%.inc.c,$(wildcard $(dir)/*.png)))

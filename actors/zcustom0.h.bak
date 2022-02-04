@@ -24,20 +24,4 @@ extern const Gfx waluigi_cap_seg3_dl_03023298[];
 // waluigi
 #include "actors/waluigi/geo_header.h"
 
-//
-//sonic
-#include "actors/sonic/geo_header.h"
-
-#include "sonic/geo_header.h"
-
-//tails
-#include "actors/tails/geo_header.h"
-
-#include "tails/geo_header.h"
-
-//peach
-#include "actors/peachPlayer/geo_header.h"
-
-#include "peachPlayer/geo_header.h"
-
 #endif

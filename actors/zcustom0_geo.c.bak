@@ -10,10 +10,3 @@
 
 #include "waluigi_cap/geo.inc.c" // custom waluigi_cap
 #include "waluigi/geo.inc.c"
-
-//
-#include "sonic/geo.inc.c"
-
-#include "tails/geo.inc.c"
-
-#include "peachPlayer/geo.inc.c"

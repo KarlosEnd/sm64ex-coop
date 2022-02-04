@@ -8,9 +8,6 @@ enum CharacterType {
     CT_LUIGI,
     CT_TOAD,
     CT_WALUIGI,
-	CT_SONIC,
-	CT_TAILS,
-	CT_PEACHPLAYER,
 
     // must be last
     CT_MAX
