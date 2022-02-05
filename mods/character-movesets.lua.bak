@@ -640,7 +640,7 @@ function sonic_update(m)
 	   mario_set_forward_vel(m, 100)
 	   else
 	   if multy > 1.0 then
-	   multy = multy - 0.1
+	   multy = multy -s 0.1
 	   end
     end
 end
