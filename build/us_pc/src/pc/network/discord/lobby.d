@@ -1,0 +1,76 @@
+build/us_pc/src/pc/network/discord/lobby.o: \
+ src/pc/network/discord/lobby.c src/pc/network/discord/lobby.h \
+ src/pc/network/discord/discord.h \
+ src/pc/network/discord/discord_game_sdk.h \
+ src/pc/network/discord/../network.h include/PR/ultratypes.h \
+ include/types.h include/ultra64.h include/PR/os_exception.h \
+ include/PR/os_misc.h include/PR/os_rdp.h include/PR/os_thread.h \
+ include/PR/ultratypes.h include/PR/os_time.h include/PR/os_message.h \
+ include/PR/os_cont.h include/PR/os_message.h include/PR/os_tlb.h \
+ include/PR/sptask.h include/PR/ucode.h include/PR/os_cache.h \
+ include/PR/os_vi.h include/PR/os_pi.h include/PR/os_internal.h \
+ include/PR/mbi.h include/platform_info.h include/PR/gbi.h \
+ src/pc/djui/djui_gbi.h include/PR/abi.h include/PR/os_eeprom.h \
+ include/PR/os_libc.h include/PR/gu.h include/PR/os_ai.h \
+ include/PR/libaudio.h include/PR/abi.h include/PR/libultra.h \
+ include/macros.h include/platform_info.h src/game/characters.h \
+ src/pc/network/version.h src/pc/network/discord/../network_player.h \
+ src/pc/network/discord/../network.h src/pc/configfile.h \
+ src/pc/network/discord/../packets/packet.h \
+ src/pc/utils/string_linked_list.h src/pc/network/discord/../../cliopts.h \
+ src/pc/network/discord/../../platform.h \
+ src/pc/network/discord/activity.h \
+ src/pc/network/discord/discord_network.h src/pc/logfile.h \
+ src/pc/debuglog.h src/pc/network/network.h src/pc/utils/misc.h
+src/pc/network/discord/lobby.h:
+src/pc/network/discord/discord.h:
+src/pc/network/discord/discord_game_sdk.h:
+src/pc/network/discord/../network.h:
+include/PR/ultratypes.h:
+include/types.h:
+include/ultra64.h:
+include/PR/os_exception.h:
+include/PR/os_misc.h:
+include/PR/os_rdp.h:
+include/PR/os_thread.h:
+include/PR/ultratypes.h:
+include/PR/os_time.h:
+include/PR/os_message.h:
+include/PR/os_cont.h:
+include/PR/os_message.h:
+include/PR/os_tlb.h:
+include/PR/sptask.h:
+include/PR/ucode.h:
+include/PR/os_cache.h:
+include/PR/os_vi.h:
+include/PR/os_pi.h:
+include/PR/os_internal.h:
+include/PR/mbi.h:
+include/platform_info.h:
+include/PR/gbi.h:
+src/pc/djui/djui_gbi.h:
+include/PR/abi.h:
+include/PR/os_eeprom.h:
+include/PR/os_libc.h:
+include/PR/gu.h:
+include/PR/os_ai.h:
+include/PR/libaudio.h:
+include/PR/abi.h:
+include/PR/libultra.h:
+include/macros.h:
+include/platform_info.h:
+src/game/characters.h:
+src/pc/network/version.h:
+src/pc/network/discord/../network_player.h:
+src/pc/network/discord/../network.h:
+src/pc/configfile.h:
+src/pc/network/discord/../packets/packet.h:
+src/pc/utils/string_linked_list.h:
+src/pc/network/discord/../../cliopts.h:
+src/pc/network/discord/../../platform.h:
+src/pc/network/discord/activity.h:
+src/pc/network/discord/discord_network.h:
+src/pc/logfile.h:
+src/pc/debuglog.h:
+src/pc/network/network.h:
+src/pc/utils/misc.h:
