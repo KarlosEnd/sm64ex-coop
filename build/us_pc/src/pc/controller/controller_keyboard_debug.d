@@ -17,16 +17,17 @@ build/us_pc/src/pc/controller/controller_keyboard_debug.o: \
  src/game/memory.h src/engine/geo_layout.h include/macros.h \
  include/level_table.h levels/level_defines.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h src/game/mario.h include/sm64.h \
- include/types.h include/config.h include/object_fields.h \
- include/object_constants.h include/audio_defines.h \
- include/luigi_audio_defines.h include/model_ids.h \
- include/mario_animation_ids.h include/mario_geo_switch_case_ids.h \
- include/surface_terrains.h include/object_fields.h \
- include/object_constants.h src/game/object_helpers.h \
- include/behavior_data.h include/behavior_table.h include/behavior_data.h
+ src/pc/configfile.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h \
+ src/game/mario.h include/sm64.h include/types.h include/config.h \
+ include/object_fields.h include/object_constants.h \
+ include/audio_defines.h include/luigi_audio_defines.h \
+ include/model_ids.h include/mario_animation_ids.h \
+ include/mario_geo_switch_case_ids.h include/surface_terrains.h \
+ include/object_fields.h include/object_constants.h \
+ src/game/object_helpers.h include/behavior_data.h \
+ include/behavior_table.h include/behavior_data.h
 src/pc/controller/controller_keyboard_debug.h:
 src/game/level_update.h:
 include/PR/ultratypes.h:
@@ -77,6 +78,7 @@ src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

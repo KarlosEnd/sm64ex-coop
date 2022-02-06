@@ -9,7 +9,8 @@ in_files = [
     'src/game/area.h',
     'src/game/camera.h',
     'src/game/characters.h',
-    'src/engine/surface_collision.h'
+    'src/engine/surface_collision.h',
+    'src/pc/network/network_player.h'
 ]
 
 smlua_cobject_autogen = 'src/pc/lua/smlua_cobject_autogen'
@@ -55,12 +56,16 @@ override_field_types = {
 override_field_immutable = {
     "MarioState": [ "playerIndex" ],
     "Character": [ "*" ],
+    "NetworkPlayer": [ "*" ],
 }
 
 sLuaManuallyDefinedStructs = [
     'struct Vec3f { float x; float y; float z; }',
     'struct Vec3s { s16 x; s16 y; s16 z; }'
 ]
+
+total_structs = 0
+total_fields = 0
 
 ############################################################################
 
@@ -183,7 +188,7 @@ def get_struct_field_info(struct, field):
 
     lvt = translate_type_to_lvt(ftype)
     lot = translate_type_to_lot(ftype)
-    fimmutable = str(lvt == 'LVT_COBJECT' or lvt == 'LVT_COBJECT_P').lower()
+    fimmutable = str(lvt == 'LVT_COBJECT' or lvt == 'LVT_COBJECT_P' or lvt == 'LVT_STRING' or lvt == 'LVT_STRING_P').lower()
 
     if sid in override_field_immutable:
         if fid in override_field_immutable[sid] or '*' in override_field_immutable[sid]:
@@ -284,14 +289,16 @@ def doc_struct_index(structs):
     for struct in structs:
         sid = struct['identifier']
         s += '- [%s](#%s)\n' % (sid, sid)
+        global total_structs
+        total_structs += 1
     s += '\n<br />\n\n'
     return s
 
 def doc_struct(struct):
     sid = struct['identifier']
     s = '## [%s](#%s)\n\n' % (sid, sid)
-    s += "| Field | Type |\n"
-    s += "| ----- | ---- |\n"
+    s += "| Field | Type | Access |\n"
+    s += "| ----- | ---- | ------ |\n"
 
 
     # build doc table
@@ -303,11 +310,15 @@ def doc_struct(struct):
 
         ftype, do_link = translate_type_to_lua(ftype)
 
+        restrictions = ('', 'read-only')[fimmutable == 'true']
         if do_link:
-            s += '| %s | [%s](#%s) |\n'  % (fid, ftype, ftype)
+            s += '| %s | [%s](#%s) | %s |\n'  % (fid, ftype, ftype, restrictions)
             continue
 
-        s += '| %s | %s |\n'  % (fid, ftype)
+        s += '| %s | %s | %s |\n'  % (fid, ftype, restrictions)
+
+        global total_fields
+        total_fields += 1
 
     s += '\n[:arrow_up_small:](#)\n\n<br />\n'
 
@@ -315,7 +326,7 @@ def doc_struct(struct):
 
 def doc_structs(structs):
     structs.extend(parse_structs(sLuaManuallyDefinedStructs))
-    structs = sorted(structs, key=lambda d: d['identifier']) 
+    structs = sorted(structs, key=lambda d: d['identifier'])
 
     s = '## [:rewind: Lua Reference](lua.md)\n\n'
     s += doc_struct_index(structs)
@@ -336,7 +347,7 @@ def build_files():
         extracted.extend(extract_structs(path))
 
     parsed = parse_structs(extracted)
-    parsed = sorted(parsed, key=lambda d: d['identifier']) 
+    parsed = sorted(parsed, key=lambda d: d['identifier'])
 
     built_body = build_body(parsed)
     built_enum = build_lot_enum()
@@ -351,6 +362,12 @@ def build_files():
         out.write(h_template.replace("$[BODY]", built_enum))
 
     doc_structs(parsed)
+
+    global total_structs
+    global total_fields
+
+    print("Total structs: " + str(total_structs))
+    print("Total fields: " + str(total_fields))
 
 ############################################################################
 

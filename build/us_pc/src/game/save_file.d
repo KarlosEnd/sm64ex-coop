@@ -23,8 +23,9 @@ build/us_pc/src/game/save_file.o: src/game/save_file.c include/ultra64.h \
  levels/course_defines.h src/game/sound_init.h src/game/thread6.h \
  src/pc/ini.h src/pc/network/network.h src/pc/network/network_player.h \
  src/pc/network/network.h src/pc/configfile.h \
- src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
- src/pc/network/../cliopts.h src/pc/network/../platform.h
+ src/pc/network/network_utils.h src/pc/network/packets/packet.h \
+ src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
+ src/pc/network/../platform.h
 include/ultra64.h:
 include/PR/ultratypes.h:
 include/PR/os_exception.h:
@@ -95,6 +96,7 @@ src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

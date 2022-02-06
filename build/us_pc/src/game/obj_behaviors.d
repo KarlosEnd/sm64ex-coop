@@ -32,14 +32,14 @@ build/us_pc/src/game/obj_behaviors.o: src/game/obj_behaviors.c \
  src/game/save_file.h src/game/spawn_object.h src/game/spawn_sound.h \
  src/engine/surface_load.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h src/pc/network/reservation_area.h \
- src/game/rng_position.h src/game/behaviors/moving_coin.inc.c \
- src/game/behaviors/seaweed.inc.c src/game/behaviors/bobomb.inc.c \
- src/game/behaviors/cannon_door.inc.c src/game/behaviors/whirlpool.inc.c \
- src/game/behaviors/amp.inc.c src/game/behaviors/butterfly.inc.c \
- src/game/behaviors/hoot.inc.c \
+ src/pc/configfile.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h \
+ src/pc/network/reservation_area.h src/game/rng_position.h \
+ src/game/behaviors/moving_coin.inc.c src/game/behaviors/seaweed.inc.c \
+ src/game/behaviors/bobomb.inc.c src/game/behaviors/cannon_door.inc.c \
+ src/game/behaviors/whirlpool.inc.c src/game/behaviors/amp.inc.c \
+ src/game/behaviors/butterfly.inc.c src/game/behaviors/hoot.inc.c \
  src/game/behaviors/beta_holdable_object.inc.c \
  src/game/behaviors/bubble.inc.c src/game/behaviors/water_wave.inc.c \
  src/game/behaviors/explosion.inc.c src/game/behaviors/corkbox.inc.c \
@@ -166,6 +166,7 @@ src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

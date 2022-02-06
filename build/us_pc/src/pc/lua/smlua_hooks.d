@@ -16,11 +16,37 @@ build/us_pc/src/pc/lua/smlua_hooks.o: src/pc/lua/smlua_hooks.c \
  src/pc/lua/smlua_cobject.h src/pc/lua/smlua_cobject_allowlist.h \
  src/pc/lua/smlua_cobject_autogen.h src/pc/lua/smlua_utils.h \
  src/pc/lua/smlua_functions.h src/pc/lua/smlua_functions_autogen.h \
- src/pc/lua/smlua_hooks.h src/pc/debuglog.h src/pc/network/network.h \
- src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
+ src/pc/lua/smlua_hooks.h src/pc/lua/smlua_sync_table.h src/pc/debuglog.h \
+ src/pc/network/network.h src/pc/network/network_player.h \
+ src/pc/network/network.h src/pc/configfile.h \
+ src/pc/network/network_utils.h src/pc/network/packets/packet.h \
  src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h
+ src/pc/network/../platform.h src/pc/djui/djui_chat_message.h \
+ src/pc/djui/djui.h src/game/game_init.h src/game/memory.h \
+ src/game/ingame_menu.h src/pc/djui/djui_types.h src/pc/djui/djui_font.h \
+ src/pc/djui/djui_gfx.h src/pc/djui/djui_base.h \
+ src/pc/djui/djui_interactable.h src/pc/djui/djui_root.h \
+ src/pc/djui/djui_cursor.h src/pc/djui/djui_rect.h \
+ src/pc/djui/djui_text.h src/pc/djui/djui_image.h \
+ src/pc/djui/djui_three_panel.h src/pc/djui/djui_button.h \
+ src/pc/djui/djui_inputbox.h src/pc/djui/djui_slider.h \
+ src/pc/djui/djui_progress_bar.h src/pc/djui/djui_checkbox.h \
+ src/pc/djui/djui_flow_layout.h src/pc/djui/djui_selectionbox.h \
+ src/pc/djui/djui_bind.h src/pc/configfile.h src/pc/djui/djui_popup.h \
+ src/pc/djui/djui_chat_box.h src/pc/djui/djui_panel.h \
+ src/pc/djui/djui_panel_menu.h src/pc/djui/djui_panel_debug.h \
+ src/pc/djui/djui_panel_main.h src/pc/djui/djui_panel_host.h \
+ src/pc/djui/djui_panel_host_settings.h \
+ src/pc/djui/djui_panel_host_mods.h src/pc/djui/djui_panel_host_save.h \
+ src/pc/djui/djui_panel_host_message.h src/pc/djui/djui_panel_join.h \
+ src/pc/djui/djui_panel_join_message.h src/pc/djui/djui_panel_pause.h \
+ src/pc/djui/djui_panel_options.h src/pc/djui/djui_panel_player.h \
+ src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_modlist.h \
+ src/pc/djui/djui_panel_camera.h src/pc/djui/djui_panel_controls.h \
+ src/pc/djui/djui_panel_controls_n64.h \
+ src/pc/djui/djui_panel_controls_extra.h src/pc/djui/djui_panel_display.h \
+ src/pc/djui/djui_panel_sound.h src/pc/djui/djui_panel_confirm.h \
+ src/pc/djui/djui_panel_cheats.h
 src/pc/lua/smlua.h:
 lib/lua/include/lua.h:
 lib/lua/include/luaconf.h:
@@ -69,12 +95,65 @@ src/pc/lua/smlua_utils.h:
 src/pc/lua/smlua_functions.h:
 src/pc/lua/smlua_functions_autogen.h:
 src/pc/lua/smlua_hooks.h:
+src/pc/lua/smlua_sync_table.h:
 src/pc/debuglog.h:
 src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:
 src/pc/network/../platform.h:
+src/pc/djui/djui_chat_message.h:
+src/pc/djui/djui.h:
+src/game/game_init.h:
+src/game/memory.h:
+src/game/ingame_menu.h:
+src/pc/djui/djui_types.h:
+src/pc/djui/djui_font.h:
+src/pc/djui/djui_gfx.h:
+src/pc/djui/djui_base.h:
+src/pc/djui/djui_interactable.h:
+src/pc/djui/djui_root.h:
+src/pc/djui/djui_cursor.h:
+src/pc/djui/djui_rect.h:
+src/pc/djui/djui_text.h:
+src/pc/djui/djui_image.h:
+src/pc/djui/djui_three_panel.h:
+src/pc/djui/djui_button.h:
+src/pc/djui/djui_inputbox.h:
+src/pc/djui/djui_slider.h:
+src/pc/djui/djui_progress_bar.h:
+src/pc/djui/djui_checkbox.h:
+src/pc/djui/djui_flow_layout.h:
+src/pc/djui/djui_selectionbox.h:
+src/pc/djui/djui_bind.h:
+src/pc/configfile.h:
+src/pc/djui/djui_popup.h:
+src/pc/djui/djui_chat_box.h:
+src/pc/djui/djui_panel.h:
+src/pc/djui/djui_panel_menu.h:
+src/pc/djui/djui_panel_debug.h:
+src/pc/djui/djui_panel_main.h:
+src/pc/djui/djui_panel_host.h:
+src/pc/djui/djui_panel_host_settings.h:
+src/pc/djui/djui_panel_host_mods.h:
+src/pc/djui/djui_panel_host_save.h:
+src/pc/djui/djui_panel_host_message.h:
+src/pc/djui/djui_panel_join.h:
+src/pc/djui/djui_panel_join_message.h:
+src/pc/djui/djui_panel_pause.h:
+src/pc/djui/djui_panel_options.h:
+src/pc/djui/djui_panel_player.h:
+src/pc/djui/djui_panel_playerlist.h:
+src/pc/djui/djui_panel_modlist.h:
+src/pc/djui/djui_panel_camera.h:
+src/pc/djui/djui_panel_controls.h:
+src/pc/djui/djui_panel_controls_n64.h:
+src/pc/djui/djui_panel_controls_extra.h:
+src/pc/djui/djui_panel_display.h:
+src/pc/djui/djui_panel_sound.h:
+src/pc/djui/djui_panel_confirm.h:
+src/pc/djui/djui_panel_cheats.h:

@@ -24,8 +24,9 @@ build/us_pc/src/game/hud.o: src/game/hud.c include/PR/ultratypes.h \
  src/game/segment2.h src/game/save_file.h include/course_table.h \
  levels/course_defines.h src/pc/configfile.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
- src/pc/network/../cliopts.h src/pc/network/../platform.h
+ src/pc/network/network_utils.h src/pc/network/packets/packet.h \
+ src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
+ src/pc/network/../platform.h
 include/PR/ultratypes.h:
 include/sm64.h:
 include/types.h:
@@ -97,6 +98,7 @@ src/pc/configfile.h:
 src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

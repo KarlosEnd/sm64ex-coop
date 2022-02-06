@@ -11,15 +11,14 @@ Lua scripts you make can be placed either the `mods` folder in the base director
 
 <br />
 
-## Globals
-| Identifier | Type | Description |
-| :--------  | :--: | :---------: |
-| gMarioStates[MAX_PLAYERS] | [MarioState](structs.md#MarioState) | An array of length MAX_PLAYERS containing mario states |
-| gCharacter[CT_MAX] | [Character](structs.md#Character) | An array of length CT_MAX containing character information |
+## Tips
+- When developing Lua mods, run the game from a console. Lua errors and logs will appear there.
+- You can use the `print()` command when debugging. Your logs will show up in the console.
 
 <br />
 
-## Exposed from SM64
+## Sections
+- [Globals](globals.md)
 - [Hooks](hooks.md)
 - [Constants](constants.md)
 - [Functions](functions.md)
@@ -32,3 +31,4 @@ Lua scripts you make can be placed either the `mods` folder in the base director
 - [Character Movesets](../../mods/character-movesets.lua)
 - [Low Gravity](../../mods/low-gravity.lua)
 - [Faster Swimming](../../mods/faster-swimming.lua)
+- [Hide and Seek](../../mods/hide-and-seek.lua)

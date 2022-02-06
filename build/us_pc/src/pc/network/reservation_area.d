@@ -13,13 +13,14 @@ build/us_pc/src/pc/network/reservation_area.o: \
  include/PR/libultra.h include/macros.h include/platform_info.h \
  src/game/characters.h src/pc/network/version.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/configfile.h \
- src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
- src/pc/network/../cliopts.h src/pc/network/../platform.h \
- include/object_fields.h include/object_constants.h \
- include/behavior_table.h include/behavior_data.h include/types.h \
- include/course_table.h levels/course_defines.h src/game/interaction.h \
- src/engine/math_util.h src/engine/../../include/libc/stdlib.h \
- src/pc/debuglog.h src/pc/network/network.h
+ src/pc/network/network_utils.h src/pc/network/packets/packet.h \
+ src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
+ src/pc/network/../platform.h include/object_fields.h \
+ include/object_constants.h include/behavior_table.h \
+ include/behavior_data.h include/types.h include/course_table.h \
+ levels/course_defines.h src/game/interaction.h src/engine/math_util.h \
+ src/engine/../../include/libc/stdlib.h src/pc/debuglog.h \
+ src/pc/network/network.h
 src/pc/network/reservation_area.h:
 include/PR/ultratypes.h:
 include/types.h:
@@ -59,6 +60,7 @@ src/pc/network/version.h:
 src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

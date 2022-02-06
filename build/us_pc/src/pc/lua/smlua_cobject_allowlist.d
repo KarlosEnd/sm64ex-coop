@@ -17,11 +17,11 @@ build/us_pc/src/pc/lua/smlua_cobject_allowlist.o: \
  src/pc/lua/smlua_cobject_allowlist.h src/pc/lua/smlua_cobject_autogen.h \
  src/pc/lua/smlua_utils.h src/pc/lua/smlua_functions.h \
  src/pc/lua/smlua_functions_autogen.h src/pc/lua/smlua_hooks.h \
- src/pc/debuglog.h src/pc/network/network.h \
+ src/pc/lua/smlua_sync_table.h src/pc/debuglog.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h
+ src/pc/configfile.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h
 src/pc/lua/smlua.h:
 lib/lua/include/lua.h:
 lib/lua/include/luaconf.h:
@@ -70,11 +70,13 @@ src/pc/lua/smlua_utils.h:
 src/pc/lua/smlua_functions.h:
 src/pc/lua/smlua_functions_autogen.h:
 src/pc/lua/smlua_hooks.h:
+src/pc/lua/smlua_sync_table.h:
 src/pc/debuglog.h:
 src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

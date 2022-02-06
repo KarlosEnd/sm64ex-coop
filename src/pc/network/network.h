@@ -6,6 +6,7 @@
 #include <types.h>
 #include <assert.h>
 #include "network_player.h"
+#include "network_utils.h"
 #include "packets/packet.h"
 #include "pc/utils/string_linked_list.h"
 #include "../cliopts.h"
@@ -75,6 +76,8 @@ struct SyncObject {
     void (*override_ownership)(u8* shouldOverride, u8* shouldOwn);
     void (*on_forget)(void);
     void* extraFields[MAX_SYNC_OBJECT_FIELDS];
+    bool rememberLastReliablePacket;
+    bool lastReliablePacketIsStale;
 };
 
 enum PlayerInteractions {

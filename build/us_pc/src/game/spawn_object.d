@@ -19,9 +19,10 @@ build/us_pc/src/game/spawn_object.o: src/game/spawn_object.c \
  src/game/object_list_processor.h src/game/area.h src/game/camera.h \
  src/game/spawn_object.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h src/pc/network/reservation_area.h
+ src/pc/configfile.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h \
+ src/pc/network/reservation_area.h
 include/PR/ultratypes.h:
 src/audio/external.h:
 include/types.h:
@@ -78,6 +79,7 @@ src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

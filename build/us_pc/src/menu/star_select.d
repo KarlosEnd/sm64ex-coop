@@ -28,10 +28,10 @@ build/us_pc/src/menu/star_select.o: src/menu/star_select.c \
  build/us_pc/include/text_menu_strings.h include/prevent_bss_reordering.h \
  src/pc/network/network.h src/pc/network/network_player.h \
  src/pc/network/network.h src/pc/configfile.h \
- src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
- src/pc/network/../cliopts.h src/pc/network/../platform.h \
- src/engine/math_util.h src/engine/../../include/libc/stdlib.h \
- src/game/print.h
+ src/pc/network/network_utils.h src/pc/network/packets/packet.h \
+ src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
+ src/pc/network/../platform.h src/engine/math_util.h \
+ src/engine/../../include/libc/stdlib.h src/game/print.h
 include/PR/ultratypes.h:
 include/PR/gbi.h:
 src/pc/djui/djui_gbi.h:
@@ -110,6 +110,7 @@ src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

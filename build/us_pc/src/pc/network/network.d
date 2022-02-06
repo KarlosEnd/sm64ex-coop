@@ -12,14 +12,15 @@ build/us_pc/src/pc/network/network.o: src/pc/network/network.c \
  include/PR/abi.h include/PR/libultra.h include/macros.h \
  include/platform_info.h src/game/characters.h src/pc/network/version.h \
  src/pc/network/network_player.h src/pc/configfile.h \
- src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
- src/pc/network/../cliopts.h src/pc/network/../platform.h \
- include/object_fields.h include/object_constants.h \
- src/game/object_list_processor.h src/game/area.h src/game/camera.h \
- src/engine/geo_layout.h src/game/memory.h include/macros.h \
- src/engine/graph_node.h include/level_table.h levels/level_defines.h \
- include/behavior_table.h include/behavior_data.h include/types.h \
- src/pc/network/socket/socket.h src/pc/network/socket/../network.h \
+ src/pc/network/network_utils.h src/pc/network/packets/packet.h \
+ src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
+ src/pc/network/../platform.h include/object_fields.h \
+ include/object_constants.h src/game/object_list_processor.h \
+ src/game/area.h src/game/camera.h src/engine/geo_layout.h \
+ src/game/memory.h include/macros.h src/engine/graph_node.h \
+ include/level_table.h levels/level_defines.h include/behavior_table.h \
+ include/behavior_data.h include/types.h src/pc/network/socket/socket.h \
+ src/pc/network/socket/../network.h \
  src/pc/network/socket/socket_windows.h src/pc/network/discord/discord.h \
  src/pc/network/discord/discord_game_sdk.h \
  src/pc/network/discord/../network.h src/pc/cheats.h src/pc/djui/djui.h \
@@ -41,8 +42,10 @@ build/us_pc/src/pc/network/network.o: src/pc/network/network.c \
  src/pc/djui/djui_panel_host_message.h src/pc/djui/djui_panel_join.h \
  src/pc/djui/djui_panel_join_message.h src/pc/djui/djui_panel_pause.h \
  src/pc/djui/djui_panel_options.h src/pc/djui/djui_panel_player.h \
- src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_camera.h \
- src/pc/djui/djui_panel_controls.h src/pc/djui/djui_panel_display.h \
+ src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_modlist.h \
+ src/pc/djui/djui_panel_camera.h src/pc/djui/djui_panel_controls.h \
+ src/pc/djui/djui_panel_controls_n64.h \
+ src/pc/djui/djui_panel_controls_extra.h src/pc/djui/djui_panel_display.h \
  src/pc/djui/djui_panel_sound.h src/pc/djui/djui_panel_confirm.h \
  src/pc/djui/djui_panel_cheats.h src/pc/utils/misc.h src/pc/lua/smlua.h \
  lib/lua/include/lua.h lib/lua/include/luaconf.h lib/lua/include/lualib.h \
@@ -50,8 +53,8 @@ build/us_pc/src/pc/network/network.o: src/pc/network/network.c \
  src/pc/lua/smlua_cobject.h src/pc/lua/smlua_cobject_allowlist.h \
  src/pc/lua/smlua_cobject_autogen.h src/pc/lua/smlua_utils.h \
  src/pc/lua/smlua_functions.h src/pc/lua/smlua_functions_autogen.h \
- src/pc/lua/smlua_hooks.h src/pc/debuglog.h src/pc/network/network.h \
- src/pc/mod_list.h
+ src/pc/lua/smlua_hooks.h src/pc/lua/smlua_sync_table.h src/pc/debuglog.h \
+ src/pc/network/network.h src/pc/mod_list.h
 src/pc/network/network.h:
 include/PR/ultratypes.h:
 include/types.h:
@@ -90,6 +93,7 @@ src/game/characters.h:
 src/pc/network/version.h:
 src/pc/network/network_player.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:
@@ -157,8 +161,11 @@ src/pc/djui/djui_panel_pause.h:
 src/pc/djui/djui_panel_options.h:
 src/pc/djui/djui_panel_player.h:
 src/pc/djui/djui_panel_playerlist.h:
+src/pc/djui/djui_panel_modlist.h:
 src/pc/djui/djui_panel_camera.h:
 src/pc/djui/djui_panel_controls.h:
+src/pc/djui/djui_panel_controls_n64.h:
+src/pc/djui/djui_panel_controls_extra.h:
 src/pc/djui/djui_panel_display.h:
 src/pc/djui/djui_panel_sound.h:
 src/pc/djui/djui_panel_confirm.h:
@@ -177,6 +184,7 @@ src/pc/lua/smlua_utils.h:
 src/pc/lua/smlua_functions.h:
 src/pc/lua/smlua_functions_autogen.h:
 src/pc/lua/smlua_hooks.h:
+src/pc/lua/smlua_sync_table.h:
 src/pc/debuglog.h:
 src/pc/network/network.h:
 src/pc/mod_list.h:

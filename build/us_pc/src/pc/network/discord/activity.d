@@ -16,6 +16,7 @@ build/us_pc/src/pc/network/discord/activity.o: \
  include/macros.h include/platform_info.h src/game/characters.h \
  src/pc/network/version.h src/pc/network/discord/../network_player.h \
  src/pc/network/discord/../network.h src/pc/configfile.h \
+ src/pc/network/discord/../network_utils.h \
  src/pc/network/discord/../packets/packet.h \
  src/pc/utils/string_linked_list.h src/pc/network/discord/../../cliopts.h \
  src/pc/network/discord/../../platform.h src/pc/network/discord/lobby.h \
@@ -39,10 +40,13 @@ build/us_pc/src/pc/network/discord/activity.o: \
  src/pc/djui/djui_panel_host_message.h src/pc/djui/djui_panel_join.h \
  src/pc/djui/djui_panel_join_message.h src/pc/djui/djui_panel_pause.h \
  src/pc/djui/djui_panel_options.h src/pc/djui/djui_panel_player.h \
- src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_camera.h \
- src/pc/djui/djui_panel_controls.h src/pc/djui/djui_panel_display.h \
+ src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_modlist.h \
+ src/pc/djui/djui_panel_camera.h src/pc/djui/djui_panel_controls.h \
+ src/pc/djui/djui_panel_controls_n64.h \
+ src/pc/djui/djui_panel_controls_extra.h src/pc/djui/djui_panel_display.h \
  src/pc/djui/djui_panel_sound.h src/pc/djui/djui_panel_confirm.h \
- src/pc/djui/djui_panel_cheats.h src/pc/logfile.h src/pc/debuglog.h
+ src/pc/djui/djui_panel_cheats.h src/pc/mod_list.h src/pc/logfile.h \
+ src/pc/debuglog.h
 src/pc/network/discord/activity.h:
 src/pc/network/discord/discord.h:
 src/pc/network/discord/discord_game_sdk.h:
@@ -85,6 +89,7 @@ src/pc/network/version.h:
 src/pc/network/discord/../network_player.h:
 src/pc/network/discord/../network.h:
 src/pc/configfile.h:
+src/pc/network/discord/../network_utils.h:
 src/pc/network/discord/../packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/discord/../../cliopts.h:
@@ -134,11 +139,15 @@ src/pc/djui/djui_panel_pause.h:
 src/pc/djui/djui_panel_options.h:
 src/pc/djui/djui_panel_player.h:
 src/pc/djui/djui_panel_playerlist.h:
+src/pc/djui/djui_panel_modlist.h:
 src/pc/djui/djui_panel_camera.h:
 src/pc/djui/djui_panel_controls.h:
+src/pc/djui/djui_panel_controls_n64.h:
+src/pc/djui/djui_panel_controls_extra.h:
 src/pc/djui/djui_panel_display.h:
 src/pc/djui/djui_panel_sound.h:
 src/pc/djui/djui_panel_confirm.h:
 src/pc/djui/djui_panel_cheats.h:
+src/pc/mod_list.h:
 src/pc/logfile.h:
 src/pc/debuglog.h:

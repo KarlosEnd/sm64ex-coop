@@ -14,8 +14,9 @@ build/us_pc/src/pc/mod_list.o: src/pc/mod_list.c src/pc/mod_list.h \
  src/pc/fs/../platform.h src/pc/utils/misc.h src/pc/debuglog.h \
  src/pc/network/network.h src/pc/network/network_player.h \
  src/pc/network/network.h src/pc/configfile.h \
- src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
- src/pc/network/../cliopts.h src/pc/network/../platform.h
+ src/pc/network/network_utils.h src/pc/network/packets/packet.h \
+ src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
+ src/pc/network/../platform.h
 src/pc/mod_list.h:
 include/PR/ultratypes.h:
 include/types.h:
@@ -60,6 +61,7 @@ src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

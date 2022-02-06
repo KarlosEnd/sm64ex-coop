@@ -36,15 +36,15 @@ build/us_pc/src/game/obj_behaviors_2.o: src/game/obj_behaviors_2.c \
  src/game/save_file.h include/course_table.h levels/course_defines.h \
  include/seq_ids.h src/game/spawn_sound.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h src/pc/network/reservation_area.h \
- src/game/behaviors/koopa.inc.c src/game/behaviors/pokey.inc.c \
- src/game/behaviors/swoop.inc.c src/game/behaviors/fly_guy.inc.c \
- src/game/behaviors/goomba.inc.c src/game/behaviors/chain_chomp.inc.c \
- src/game/behaviors/wiggler.inc.c src/game/behaviors/spiny.inc.c \
- src/game/behaviors/enemy_lakitu.inc.c src/game/behaviors/cloud.inc.c \
- src/game/behaviors/camera_lakitu.inc.c \
+ src/pc/configfile.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h \
+ src/pc/network/reservation_area.h src/game/behaviors/koopa.inc.c \
+ src/game/behaviors/pokey.inc.c src/game/behaviors/swoop.inc.c \
+ src/game/behaviors/fly_guy.inc.c src/game/behaviors/goomba.inc.c \
+ src/game/behaviors/chain_chomp.inc.c src/game/behaviors/wiggler.inc.c \
+ src/game/behaviors/spiny.inc.c src/game/behaviors/enemy_lakitu.inc.c \
+ src/game/behaviors/cloud.inc.c src/game/behaviors/camera_lakitu.inc.c \
  src/game/behaviors/monty_mole.inc.c \
  src/game/behaviors/platform_on_track.inc.c \
  src/game/behaviors/seesaw_platform.inc.c \
@@ -185,6 +185,7 @@ src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

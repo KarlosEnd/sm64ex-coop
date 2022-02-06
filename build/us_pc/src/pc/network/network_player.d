@@ -12,10 +12,10 @@ build/us_pc/src/pc/network/network_player.o: \
  include/PR/gu.h include/PR/os_ai.h include/PR/libaudio.h \
  include/PR/abi.h include/PR/libultra.h include/macros.h \
  include/platform_info.h src/game/characters.h src/pc/network/version.h \
- src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
- src/pc/network/../cliopts.h src/pc/network/../platform.h \
- src/pc/configfile.h src/game/mario_misc.h include/macros.h \
- src/pc/network/reservation_area.h src/pc/djui/djui.h \
+ src/pc/network/network_utils.h src/pc/network/packets/packet.h \
+ src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
+ src/pc/network/../platform.h src/pc/configfile.h src/game/mario_misc.h \
+ include/macros.h src/pc/network/reservation_area.h src/pc/djui/djui.h \
  src/game/game_init.h src/game/memory.h src/game/ingame_menu.h \
  src/pc/djui/djui_types.h src/pc/djui/djui_font.h src/pc/djui/djui_gfx.h \
  src/pc/djui/djui_base.h src/pc/djui/djui_interactable.h \
@@ -34,14 +34,16 @@ build/us_pc/src/pc/network/network_player.o: \
  src/pc/djui/djui_panel_host_message.h src/pc/djui/djui_panel_join.h \
  src/pc/djui/djui_panel_join_message.h src/pc/djui/djui_panel_pause.h \
  src/pc/djui/djui_panel_options.h src/pc/djui/djui_panel_player.h \
- src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_camera.h \
- src/pc/djui/djui_panel_controls.h src/pc/djui/djui_panel_display.h \
+ src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_modlist.h \
+ src/pc/djui/djui_panel_camera.h src/pc/djui/djui_panel_controls.h \
+ src/pc/djui/djui_panel_controls_n64.h \
+ src/pc/djui/djui_panel_controls_extra.h src/pc/djui/djui_panel_display.h \
  src/pc/djui/djui_panel_sound.h src/pc/djui/djui_panel_confirm.h \
  src/pc/djui/djui_panel_cheats.h src/pc/debuglog.h \
  src/pc/network/network.h src/pc/utils/misc.h src/game/area.h \
  src/game/camera.h src/game/area.h src/engine/geo_layout.h \
  src/game/memory.h src/engine/graph_node.h include/level_table.h \
- levels/level_defines.h src/game/level_info.h
+ levels/level_defines.h src/game/level_info.h src/pc/lua/smlua_hooks.h
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 include/PR/ultratypes.h:
@@ -79,6 +81,7 @@ include/macros.h:
 include/platform_info.h:
 src/game/characters.h:
 src/pc/network/version.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:
@@ -129,8 +132,11 @@ src/pc/djui/djui_panel_pause.h:
 src/pc/djui/djui_panel_options.h:
 src/pc/djui/djui_panel_player.h:
 src/pc/djui/djui_panel_playerlist.h:
+src/pc/djui/djui_panel_modlist.h:
 src/pc/djui/djui_panel_camera.h:
 src/pc/djui/djui_panel_controls.h:
+src/pc/djui/djui_panel_controls_n64.h:
+src/pc/djui/djui_panel_controls_extra.h:
 src/pc/djui/djui_panel_display.h:
 src/pc/djui/djui_panel_sound.h:
 src/pc/djui/djui_panel_confirm.h:
@@ -147,3 +153,4 @@ src/engine/graph_node.h:
 include/level_table.h:
 levels/level_defines.h:
 src/game/level_info.h:
+src/pc/lua/smlua_hooks.h:

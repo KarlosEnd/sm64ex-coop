@@ -12,15 +12,15 @@ build/us_pc/src/game/behavior_actions.o: src/game/behavior_actions.c \
  include/PR/abi.h include/PR/libultra.h include/macros.h \
  include/platform_info.h src/game/characters.h src/pc/network/version.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h actors/common1.h actors/group12.h \
- actors/group13.h src/game/area.h src/game/camera.h \
- src/engine/geo_layout.h src/game/memory.h include/macros.h \
- src/engine/graph_node.h include/level_table.h levels/level_defines.h \
- src/audio/external.h src/game/behavior_actions.h include/behavior_data.h \
- include/types.h src/game/debug.h include/dialog_ids.h \
- src/engine/behavior_script.h src/engine/math_util.h \
+ src/pc/configfile.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h \
+ actors/common1.h actors/group12.h actors/group13.h src/game/area.h \
+ src/game/camera.h src/engine/geo_layout.h src/game/memory.h \
+ include/macros.h src/engine/graph_node.h include/level_table.h \
+ levels/level_defines.h src/audio/external.h src/game/behavior_actions.h \
+ include/behavior_data.h include/types.h src/game/debug.h \
+ include/dialog_ids.h src/engine/behavior_script.h src/engine/math_util.h \
  src/engine/../../include/libc/stdlib.h src/engine/surface_collision.h \
  src/engine/surface_load.h src/game/game_init.h src/game/memory.h \
  src/game/ingame_menu.h src/game/interaction.h \
@@ -165,6 +165,7 @@ src/pc/network/version.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

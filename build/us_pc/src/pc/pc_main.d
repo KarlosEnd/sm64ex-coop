@@ -21,15 +21,15 @@ build/us_pc/src/pc/pc_main.o: src/pc/pc_main.c include/sm64.h \
  src/pc/lua/smlua_cobject_allowlist.h src/pc/lua/smlua_cobject_autogen.h \
  src/pc/lua/smlua_utils.h src/pc/lua/smlua_functions.h \
  src/pc/lua/smlua_functions_autogen.h src/pc/lua/smlua_hooks.h \
- src/pc/debuglog.h src/pc/network/network.h \
+ src/pc/lua/smlua_sync_table.h src/pc/debuglog.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h src/game/memory.h src/audio/external.h \
- src/pc/network/network.h src/pc/lua/smlua.h src/pc/gfx/gfx_pc.h \
- src/pc/gfx/gfx_opengl.h src/pc/gfx/gfx_rendering_api.h \
- src/pc/gfx/gfx_direct3d11.h src/pc/gfx/gfx_direct3d12.h \
- src/pc/gfx/gfx_dxgi.h src/pc/gfx/gfx_sdl.h \
+ src/pc/configfile.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h \
+ src/game/memory.h src/audio/external.h src/pc/network/network.h \
+ src/pc/lua/smlua.h src/pc/gfx/gfx_pc.h src/pc/gfx/gfx_opengl.h \
+ src/pc/gfx/gfx_rendering_api.h src/pc/gfx/gfx_direct3d11.h \
+ src/pc/gfx/gfx_direct3d12.h src/pc/gfx/gfx_dxgi.h src/pc/gfx/gfx_sdl.h \
  src/pc/gfx/gfx_window_manager_api.h src/pc/gfx/gfx_dummy.h \
  src/pc/audio/audio_api.h src/pc/audio/audio_sdl.h \
  src/pc/audio/audio_api.h src/pc/audio/audio_null.h src/pc/pc_main.h \
@@ -56,8 +56,10 @@ build/us_pc/src/pc/pc_main.o: src/pc/pc_main.c include/sm64.h \
  src/pc/djui/djui_panel_host_message.h src/pc/djui/djui_panel_join.h \
  src/pc/djui/djui_panel_join_message.h src/pc/djui/djui_panel_pause.h \
  src/pc/djui/djui_panel_options.h src/pc/djui/djui_panel_player.h \
- src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_camera.h \
- src/pc/djui/djui_panel_controls.h src/pc/djui/djui_panel_display.h \
+ src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_modlist.h \
+ src/pc/djui/djui_panel_camera.h src/pc/djui/djui_panel_controls.h \
+ src/pc/djui/djui_panel_controls_n64.h \
+ src/pc/djui/djui_panel_controls_extra.h src/pc/djui/djui_panel_display.h \
  src/pc/djui/djui_panel_sound.h src/pc/djui/djui_panel_confirm.h \
  src/pc/djui/djui_panel_cheats.h src/pc/mod_list.h src/game/display.h
 include/sm64.h:
@@ -119,11 +121,13 @@ src/pc/lua/smlua_utils.h:
 src/pc/lua/smlua_functions.h:
 src/pc/lua/smlua_functions_autogen.h:
 src/pc/lua/smlua_hooks.h:
+src/pc/lua/smlua_sync_table.h:
 src/pc/debuglog.h:
 src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:
@@ -198,8 +202,11 @@ src/pc/djui/djui_panel_pause.h:
 src/pc/djui/djui_panel_options.h:
 src/pc/djui/djui_panel_player.h:
 src/pc/djui/djui_panel_playerlist.h:
+src/pc/djui/djui_panel_modlist.h:
 src/pc/djui/djui_panel_camera.h:
 src/pc/djui/djui_panel_controls.h:
+src/pc/djui/djui_panel_controls_n64.h:
+src/pc/djui/djui_panel_controls_extra.h:
 src/pc/djui/djui_panel_display.h:
 src/pc/djui/djui_panel_sound.h:
 src/pc/djui/djui_panel_confirm.h:

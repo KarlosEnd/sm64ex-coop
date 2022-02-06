@@ -27,9 +27,10 @@ build/us_pc/src/game/interaction.o: src/game/interaction.c \
  include/mario_geo_switch_case_ids.h include/surface_terrains.h \
  src/game/sound_init.h src/game/thread6.h src/pc/configfile.h \
  src/pc/network/network.h src/pc/network/network_player.h \
- src/pc/network/network.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h
+ src/pc/network/network.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h \
+ src/pc/lua/smlua_hooks.h
 include/PR/ultratypes.h:
 src/game/area.h:
 include/types.h:
@@ -110,7 +111,9 @@ src/pc/configfile.h:
 src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:
 src/pc/network/../platform.h:
+src/pc/lua/smlua_hooks.h:

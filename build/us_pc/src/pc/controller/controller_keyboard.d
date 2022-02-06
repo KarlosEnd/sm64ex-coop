@@ -36,8 +36,10 @@ build/us_pc/src/pc/controller/controller_keyboard.o: \
  src/pc/djui/djui_panel_host_message.h src/pc/djui/djui_panel_join.h \
  src/pc/djui/djui_panel_join_message.h src/pc/djui/djui_panel_pause.h \
  src/pc/djui/djui_panel_options.h src/pc/djui/djui_panel_player.h \
- src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_camera.h \
- src/pc/djui/djui_panel_controls.h src/pc/djui/djui_panel_display.h \
+ src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_modlist.h \
+ src/pc/djui/djui_panel_camera.h src/pc/djui/djui_panel_controls.h \
+ src/pc/djui/djui_panel_controls_n64.h \
+ src/pc/djui/djui_panel_controls_extra.h src/pc/djui/djui_panel_display.h \
  src/pc/djui/djui_panel_sound.h src/pc/djui/djui_panel_confirm.h \
  src/pc/djui/djui_panel_cheats.h
 include/ultra64.h:
@@ -127,8 +129,11 @@ src/pc/djui/djui_panel_pause.h:
 src/pc/djui/djui_panel_options.h:
 src/pc/djui/djui_panel_player.h:
 src/pc/djui/djui_panel_playerlist.h:
+src/pc/djui/djui_panel_modlist.h:
 src/pc/djui/djui_panel_camera.h:
 src/pc/djui/djui_panel_controls.h:
+src/pc/djui/djui_panel_controls_n64.h:
+src/pc/djui/djui_panel_controls_extra.h:
 src/pc/djui/djui_panel_display.h:
 src/pc/djui/djui_panel_sound.h:
 src/pc/djui/djui_panel_confirm.h:

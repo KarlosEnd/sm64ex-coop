@@ -27,9 +27,9 @@ build/us_pc/src/game/area.o: src/game/area.c include/PR/ultratypes.h \
  src/game/level_update.h src/game/save_file.h include/course_table.h \
  levels/course_defines.h src/game/ingame_menu.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h
+ src/pc/configfile.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h
 include/PR/ultratypes.h:
 include/prevent_bss_reordering.h:
 src/game/area.h:
@@ -109,6 +109,7 @@ src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

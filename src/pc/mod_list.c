@@ -10,6 +10,7 @@
 
 struct ModTable gModTableLocal  = { .entries = NULL, .entryCount = 0, .totalSize = 0, .isRemote = false };
 struct ModTable gModTableRemote = { .entries = NULL, .entryCount = 0, .totalSize = 0, .isRemote = true  };
+struct ModTable* gModTableCurrent = &gModTableLocal;
 
 static char sTmpSession[MAX_SESSION_CHARS] = { 0 };
 static char sTmpPath[PATH_MAX] = { 0 };
@@ -99,13 +100,15 @@ static char* extract_lua_field(char* fieldName, char* buffer) {
     return NULL;
 }
 
-static void extract_lua_fields(struct ModListEntry* entry) {
+void mod_list_extract_lua_fields(struct ModListEntry* entry) {
     FILE* f = entry->fp;
     char buffer[512] = { 0 };
 
     entry->displayName = NULL;
     entry->incompatible = NULL;
     entry->description = NULL;
+
+    fseek(entry->fp, 0, SEEK_SET);
 
     while (!feof(f)) {
         file_get_line(buffer, 512, f);
@@ -128,6 +131,7 @@ static void extract_lua_fields(struct ModListEntry* entry) {
             snprintf(entry->description, 512, "%s", extracted);
         }
     }
+
 }
 
 static void mod_list_add_local(u16 index, const char* path, char* name) {
@@ -142,13 +146,14 @@ static void mod_list_add_local(u16 index, const char* path, char* name) {
     snprintf(entry->path, PATH_MAX - 1, "%s/%s", path, name);
     entry->fp = fopen(entry->path, "rb");
 
-    extract_lua_fields(entry);
+    mod_list_extract_lua_fields(entry);
 
     fseek(entry->fp, 0, SEEK_END);
     entry->size = ftell(entry->fp);
     table->totalSize += entry->size;
     fseek(entry->fp, 0, SEEK_SET);
 
+    entry->remoteIndex = index;
     entry->complete = true;
     entry->enabled = false;
     entry->selectable = true;
@@ -211,9 +216,11 @@ static bool mod_list_incompatible_match(struct ModListEntry* a, struct ModListEn
     char* bi = b->incompatible;
     char* atoken = NULL;
     char* btoken = NULL;
+    char* arest = NULL;
+    char* brest = NULL;
 
-    while ((atoken = strtok(ai, " "))) {
-        while((btoken = strtok(bi, " "))) {
+    for (atoken = strtok_r(ai, " ", &arest); atoken != NULL; atoken = strtok_r(NULL, " ", &arest)) {
+        for (btoken = strtok_r(bi, " ", &brest); btoken != NULL; btoken = strtok_r(NULL, " ", &brest)) {
             if (!strcmp(atoken, btoken)) {
                 return true;
             }
@@ -263,14 +270,15 @@ static void mod_list_load_local(const char* path) {
         count++;
     }
 
+    u16 totalCount = table->entryCount;
     u16 index = 0;
     if (table->entries == NULL) {
         if (count == 0) { closedir(d); return; }
         mod_list_alloc(table, count);
     } else {
         index = table->entryCount;
-        table->entryCount += count;
-        table->entries = (struct ModListEntry*)realloc(table->entries, table->entryCount * sizeof(struct ModListEntry));
+        totalCount += count;
+        table->entries = (struct ModListEntry*)realloc(table->entries, totalCount * sizeof(struct ModListEntry));
     }
 
     rewinddir(d);
@@ -281,12 +289,14 @@ static void mod_list_load_local(const char* path) {
         if (mod_list_contains(table, dir->d_name)) { continue; }
         LOG_INFO("    %s", dir->d_name);
         mod_list_add_local(index++, path, dir->d_name);
+        if (index > table->entryCount) { table->entryCount = index; }
     }
 
     closedir(d);
 }
 
 void mod_list_init(void) {
+    gModTableCurrent = &gModTableLocal;
     srand(time(0));
     snprintf(sTmpSession, MAX_SESSION_CHARS, "%06X", (u32)(rand() % 0xFFFFFF));
     snprintf(sTmpPath, PATH_MAX - 1, "%s", fs_get_write_path("tmp"));

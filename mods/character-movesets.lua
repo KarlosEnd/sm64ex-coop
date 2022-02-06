@@ -142,9 +142,29 @@ function luigi_before_phys_step(m)
         end
     end
 
-    -- slower ground movement
-    if (m.action & ACT_FLAG_MOVING) ~= 0 then
-        hScale = hScale * 0.99
+    -- acceleration
+    if (m.action == ACT_WALKING) then
+        if (floorClass == 19 or floorClass == 20) then
+            hScale = -(m.forwardVel / 64) + 1.5
+        else
+            hScale = (m.forwardVel / 64) + 0.5
+        end
+    end
+
+    -- friction
+    if (m.action == ACT_BRAKING or m.action == ACT_TURNING_AROUND) then
+        if (floorClass == 19 or floorClass == 20) then
+            m.forwardVel = m.forwardVel - 3
+        elseif (floorClass == 21) then
+            hScale = hScale * 1.5
+            m.forwardVel = m.forwardVel + (hScale * 2)
+        else
+            hScale = hScale * 1.4
+            m.forwardVel = m.forwardVel + hScale
+        end
+        if (m.forwardVel < 0) then
+            m.forwardVel = 0
+        end
     end
 
     m.vel.x = m.vel.x * hScale
@@ -161,7 +181,7 @@ function luigi_on_set_action(m)
 
     -- nerf wall kicks
     elseif m.action == ACT_WALL_KICK_AIR and m.prevAction ~= ACT_HOLDING_POLE and m.prevAction ~= ACT_CLIMBING_POLE then
-        if m.vel.y > 30 then m.vel.y = 30 end
+        if m.vel.y > 40 then m.vel.y = 40 end
         return
 
     -- turn dive into kick when holding jump
@@ -191,7 +211,7 @@ function luigi_update(m)
             m.vel.y = m.vel.y + 3
             set_mario_animation(m, MARIO_ANIM_RUNNING_UNUSED)
             set_anim_to_frame(m, e.animFrame)
-            e.animFrame = e.animFrame + 10
+            e.animFrame = e.animFrame + 13
             if e.animFrame >= m.marioObj.header.gfx.animInfo.curAnim.loopEnd then
                 e.animFrame = e.animFrame - m.marioObj.header.gfx.animInfo.curAnim.loopEnd
             end
@@ -431,224 +451,6 @@ gEventTable[CT_WALUIGI] = {
     before_phys_step = waluigi_before_phys_step,
     on_set_action    = waluigi_on_set_action,
     update           = waluigi_update,
-}
-
-
-----------
---TAILS---
-----------
-
-function tails_before_phys_step(m)
-    local e = gStateExtras[m.playerIndex]
-
-    local hScale = 1.0
-    local vScale = 1.0
-
-    -- faster swimming
-    if (m.action & ACT_FLAG_SWIMMING) ~= 0 then
-        hScale = hScale * 1.5
-        if m.action ~= ACT_WATER_PLUNGE then
-            vScale = vScale * 1.5
-        end
-    end
-
-    -- slower holding item
-    if m.heldObj ~= nil then
-        m.vel.y = m.vel.y - 2.0
-        hScale = hScale * 0.9
-        if (m.action & ACT_FLAG_AIR) ~= 0 then
-            hScale = hScale * 0.9
-        end
-    end
-
-    -- slower ground movement
-    if (m.action & ACT_FLAG_MOVING) ~= 0 then
-        hScale = hScale * 0.99
-    end
-
-    m.vel.x = m.vel.x * hScale
-    m.vel.y = m.vel.y * vScale
-    m.vel.z = m.vel.z * hScale
-end
-
-function tails_on_set_action(m)
-    local e = gStateExtras[m.playerIndex]
-
-    -- extra height to the backflip
-    if m.action == ACT_BACKFLIP then
-        m.vel.y = m.vel.y + 18
-
-    -- nerf wall kicks
-    elseif m.action == ACT_WALL_KICK_AIR and m.prevAction ~= ACT_HOLDING_POLE and m.prevAction ~= ACT_CLIMBING_POLE then
-        if m.vel.y > 30 then m.vel.y = 30 end
-        return
-
-    -- turn dive into kick when holding jump
-    elseif m.action == ACT_DIVE and (m.controller.buttonDown & A_BUTTON) ~= 0 and e.scuttle > 0 then
-        return set_mario_action(m, ACT_JUMP_KICK, 0)
-
-    -- extra height on jumps
-    elseif m.action == ACT_JUMP or m.action == ACT_DOUBLE_JUMP or m.action == ACT_TRIPLE_JUMP or m.action == ACT_SPECIAL_TRIPLE_JUMP or m.action == ACT_STEEP_JUMP or m.action == ACT_SIDE_FLIP or m.action == ACT_RIDING_SHELL_JUMP then
-        m.vel.y = m.vel.y + 6
-
-    end
-
-    e.lastAction = action
-end
-
-function tails_update(m)
-    local e = gStateExtras[m.playerIndex]
-
-    -- air scuttle
-    e.scuttle = 0
-    local shouldScuttle = (m.action == ACT_JUMP or m.action == ACT_DOUBLE_JUMP) and ((m.controller.buttonDown & A_BUTTON) ~= 0 and m.vel.y < -5)
-    if shouldScuttle then
-        -- prevent wing flutter from glitching out while scuttling
-        if (m.flags & MARIO_WING_CAP) ~= 0 then
-            m.vel.y = m.vel.y + 1
-        else
-            m.vel.y = m.vel.y + 4
-			m.vel.x = m.vel.x * 2
-			m.vel.z = m.vel.z * 2
-            set_mario_animation(m, MARIO_ANIM_WING_CAP_FLY)
-            set_anim_to_frame(m, e.animFrame)
-            e.animFrame = e.animFrame + 1
-            if e.animFrame >= m.marioObj.header.gfx.animInfo.curAnim.loopEnd then
-                e.animFrame = e.animFrame - m.marioObj.header.gfx.animInfo.curAnim.loopEnd
-            end
-            e.scuttle = 1
-        end
-    end
-
-    -- twirl pound
-    if m.action == ACT_TWIRLING and (m.input & INPUT_Z_PRESSED) ~= 0 then
-        set_mario_action(m, ACT_SPIN_POUND, 0)
-    end
-
-    -- backflip turns into twirl
-    if m.action == ACT_BACKFLIP and m.marioObj.header.gfx.animInfo.animFrame > 18 then
-        m.angleVel.y = 0x1800
-        set_mario_action(m, ACT_TWIRLING, 1)
-    end
-end
-
-gEventTable[5] = {
-    before_phys_step = tails_before_phys_step,
-    on_set_action    = tails_on_set_action,
-    update           = tails_update,
-}
-
-
---SONIC--
-
-local multy = 1.0
-function sonic_before_phys_step(m)
-    local e = gStateExtras[m.playerIndex]
-
-    local hScale = 1.0
-    local vScale = 1.0
-
-    -- faster swimming
-    if (m.action & ACT_FLAG_SWIMMING) ~= 0 then
-        hScale = hScale * 1.5
-        if m.action ~= ACT_WATER_PLUNGE then
-            vScale = vScale * 1.5
-        end
-    end
-
-    -- slower holding item
-    if m.heldObj ~= nil then
-        m.vel.y = m.vel.y - 2.0
-        hScale = hScale * 0.9
-        if (m.action & ACT_FLAG_AIR) ~= 0 then
-            hScale = hScale * 0.9
-        end
-    end
-
-    -- slower ground movement
-    if (m.action & ACT_FLAG_MOVING) ~= 0 then
-        hScale = hScale * 0.99
-    end
-
-	 if (m.action == ACT_WALKING ) then
-    m.vel.x = m.vel.x * multy
-    m.vel.y = m.vel.y * multy
-    m.vel.z = m.vel.z * multy
-	end
-end
-
-function sonic_on_set_action(m)
-    local e = gStateExtras[m.playerIndex]
-
-    -- extra height to the backflip
-    if m.action == ACT_BACKFLIP then
-        m.vel.y = m.vel.y + 18
-
-    -- nerf wall kicks
-    elseif m.action == ACT_WALL_KICK_AIR and m.prevAction ~= ACT_HOLDING_POLE and m.prevAction ~= ACT_CLIMBING_POLE then
-        if m.vel.y > 30 then m.vel.y = 30 end
-        return
-
-    -- turn dive into kick when holding jump
-    elseif m.action == ACT_DIVE and (m.controller.buttonDown & A_BUTTON) ~= 0 and e.scuttle > 0 then
-        return set_mario_action(m, ACT_JUMP_KICK, 0)
-
-    -- extra height on jumps
-    elseif m.action == ACT_JUMP or m.action == ACT_DOUBLE_JUMP or m.action == ACT_TRIPLE_JUMP or m.action == ACT_SPECIAL_TRIPLE_JUMP or m.action == ACT_STEEP_JUMP or m.action == ACT_SIDE_FLIP or m.action == ACT_RIDING_SHELL_JUMP then
-        m.vel.y = m.vel.y + 6
-
-    end
-
-    e.lastAction = action
-end
-
-function sonic_update(m)
-    local e = gStateExtras[m.playerIndex]
-		
-    -- air scuttle
-    e.scuttle = 0
-    local shouldScuttle = (m.action == ACT_JUMP or m.action == ACT_DOUBLE_JUMP) and ((m.controller.buttonDown & A_BUTTON) ~= 0 and m.vel.y < -5)
-    if shouldScuttle then
-        -- prevent wing flutter from glitching out while scuttling
-        if (m.flags & MARIO_WING_CAP) ~= 0 then
-            m.vel.y = m.vel.y + 1
-        else
-            m.vel.y = m.vel.y + 3
-            set_mario_animation(m, MARIO_ANIM_RUNNING_UNUSED)
-            set_anim_to_frame(m, e.animFrame)
-            e.animFrame = e.animFrame + 10
-            if e.animFrame >= m.marioObj.header.gfx.animInfo.curAnim.loopEnd then
-                e.animFrame = e.animFrame - m.marioObj.header.gfx.animInfo.curAnim.loopEnd
-            end
-            e.scuttle = 1
-        end
-    end
-
-    -- twirl pound
-    if m.action == ACT_TWIRLING and (m.input & INPUT_Z_PRESSED) ~= 0 then
-        set_mario_action(m, ACT_SPIN_POUND, 0)
-    end
-
-    -- backflip turns into twirl
-    if m.action == ACT_BACKFLIP and m.marioObj.header.gfx.animInfo.animFrame > 18 then
-        m.angleVel.y = 0x1800
-        set_mario_action(m, ACT_TWIRLING, 1)
-    end
-	
-	if (m.controller.buttonDown & Z_TRIG) ~= 0 and (m.action == ACT_WALKING ) then
-		multy = 2.5
-	   mario_set_forward_vel(m, 100)
-	   else
-	   if multy > 1.0 then
-	   multy = multy - 0.1
-	   end
-    end
-end
-
-gEventTable[4] = {
-    before_phys_step = sonic_before_phys_step,
-    on_set_action    = sonic_on_set_action,
-    update           = sonic_update,
 }
 
 ----------

@@ -29,13 +29,14 @@ build/us_pc/src/game/ingame_menu.o: src/game/ingame_menu.c \
  build/us_pc/include/text_menu_strings.h src/pc/cheats.h \
  src/pc/network/network.h src/pc/network/network_player.h \
  src/pc/network/network.h src/pc/configfile.h \
- src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
- src/pc/network/../cliopts.h src/pc/network/../platform.h \
- src/pc/djui/djui.h src/game/game_init.h src/game/ingame_menu.h \
- src/pc/djui/djui_types.h src/pc/djui/djui_font.h src/pc/djui/djui_gfx.h \
- src/pc/djui/djui_base.h src/pc/djui/djui_interactable.h \
- src/pc/djui/djui_root.h src/pc/djui/djui_cursor.h \
- src/pc/djui/djui_rect.h src/pc/djui/djui_text.h src/pc/djui/djui_image.h \
+ src/pc/network/network_utils.h src/pc/network/packets/packet.h \
+ src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
+ src/pc/network/../platform.h src/pc/djui/djui.h src/game/game_init.h \
+ src/game/ingame_menu.h src/pc/djui/djui_types.h src/pc/djui/djui_font.h \
+ src/pc/djui/djui_gfx.h src/pc/djui/djui_base.h \
+ src/pc/djui/djui_interactable.h src/pc/djui/djui_root.h \
+ src/pc/djui/djui_cursor.h src/pc/djui/djui_rect.h \
+ src/pc/djui/djui_text.h src/pc/djui/djui_image.h \
  src/pc/djui/djui_three_panel.h src/pc/djui/djui_button.h \
  src/pc/djui/djui_inputbox.h src/pc/djui/djui_slider.h \
  src/pc/djui/djui_progress_bar.h src/pc/djui/djui_checkbox.h \
@@ -49,8 +50,10 @@ build/us_pc/src/game/ingame_menu.o: src/game/ingame_menu.c \
  src/pc/djui/djui_panel_host_message.h src/pc/djui/djui_panel_join.h \
  src/pc/djui/djui_panel_join_message.h src/pc/djui/djui_panel_pause.h \
  src/pc/djui/djui_panel_options.h src/pc/djui/djui_panel_player.h \
- src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_camera.h \
- src/pc/djui/djui_panel_controls.h src/pc/djui/djui_panel_display.h \
+ src/pc/djui/djui_panel_playerlist.h src/pc/djui/djui_panel_modlist.h \
+ src/pc/djui/djui_panel_camera.h src/pc/djui/djui_panel_controls.h \
+ src/pc/djui/djui_panel_controls_n64.h \
+ src/pc/djui/djui_panel_controls_extra.h src/pc/djui/djui_panel_display.h \
  src/pc/djui/djui_panel_sound.h src/pc/djui/djui_panel_confirm.h \
  src/pc/djui/djui_panel_cheats.h src/game/bettercamera.h
 include/ultra64.h:
@@ -135,6 +138,7 @@ src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:
@@ -180,8 +184,11 @@ src/pc/djui/djui_panel_pause.h:
 src/pc/djui/djui_panel_options.h:
 src/pc/djui/djui_panel_player.h:
 src/pc/djui/djui_panel_playerlist.h:
+src/pc/djui/djui_panel_modlist.h:
 src/pc/djui/djui_panel_camera.h:
 src/pc/djui/djui_panel_controls.h:
+src/pc/djui/djui_panel_controls_n64.h:
+src/pc/djui/djui_panel_controls_extra.h:
 src/pc/djui/djui_panel_display.h:
 src/pc/djui/djui_panel_sound.h:
 src/pc/djui/djui_panel_confirm.h:

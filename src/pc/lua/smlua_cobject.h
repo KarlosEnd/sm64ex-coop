@@ -2,6 +2,7 @@
 #define SMLUA_COBJECT_H
 
 enum LuaValueType {
+    LVT_BOOL,
     LVT_U8,
     LVT_U16,
     LVT_U32,
@@ -11,6 +12,8 @@ enum LuaValueType {
     LVT_F32,
     LVT_COBJECT,
     LVT_COBJECT_P,
+    LVT_STRING,
+    LVT_STRING_P,
 };
 
 enum LuaObjectType {

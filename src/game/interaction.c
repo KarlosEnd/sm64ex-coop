@@ -27,6 +27,7 @@
 
 #include "pc/configfile.h"
 #include "pc/network/network.h"
+#include "pc/lua/smlua_hooks.h"
 
 #define INT_GROUND_POUND_OR_TWIRL (1 << 0) // 0x01
 #define INT_PUNCH                 (1 << 1) // 0x02
@@ -1256,15 +1257,19 @@ static u8 resolve_player_collision(struct MarioState* m, struct MarioState* m2) 
         }
         f32 velY = fmax(fmin(50.0f, 10.0f + fabs(m->vel[1])), 30.0f);
         if (m2->action == ACT_CROUCHING) {
+            mario_stop_riding_and_holding(m);
             set_mario_action(m, ACT_TWIRLING, 0);
             velY = fmax(fmin(100.0f, 30.0f + fabs(m->vel[1])), 80.0f);
         } else if (m->action == ACT_JUMP) {
+            mario_stop_riding_and_holding(m);
             set_mario_action(m, ACT_DOUBLE_JUMP, 0);
             velY = fmax(fmin(55.0f, 15.0f + fabs(m->vel[1])), 35.0f);
         } else if (m->action == ACT_DOUBLE_JUMP) {
+            mario_stop_riding_and_holding(m);
             set_mario_action(m, (gSpecialTripleJump && m->playerIndex == 0) ? ACT_SPECIAL_TRIPLE_JUMP : ACT_TRIPLE_JUMP, 0);
             velY = fmax(fmin(60.0f, 20.0f + fabs(m->vel[1])), 40.0f);
         } else {
+            mario_stop_riding_and_holding(m);
             set_mario_action(m, ACT_JUMP, 0);
             velY = fmax(fmin(50.0f, 15.0f + fabs(m->vel[1])), 30.0f);
         }
@@ -1339,9 +1344,10 @@ u32 interact_player(struct MarioState* m, UNUSED u32 interactType, struct Object
     // attacked
     u8 isInCutscene = ((m->action & ACT_GROUP_MASK) == ACT_GROUP_CUTSCENE) || ((m2->action & ACT_GROUP_MASK) == ACT_GROUP_CUTSCENE);
     isInCutscene = isInCutscene || (m->action == ACT_IN_CANNON) || (m2->action == ACT_IN_CANNON);
+    u8 isAttackerInvulnerable = (m->action & ACT_FLAG_INVULNERABLE) || m->invincTimer != 0 || m->hurtCounter != 0;
     u8 isInvulnerable = (m2->action & ACT_FLAG_INVULNERABLE) || m2->invincTimer != 0 || m2->hurtCounter != 0 || isInCutscene;
     u8 isIgnoredAttack = (m->action == ACT_JUMP || m->action == ACT_DOUBLE_JUMP);
-    if ((interaction & INT_ANY_ATTACK) && !(interaction & INT_HIT_FROM_ABOVE) && !isInvulnerable && !isIgnoredAttack) {
+    if ((interaction & INT_ANY_ATTACK) && !(interaction & INT_HIT_FROM_ABOVE) && !isInvulnerable && !isIgnoredAttack && !isAttackerInvulnerable) {
 
         // determine if slide attack should be ignored
         if ((interaction & INT_ATTACK_SLIDE) && player_is_sliding(m2)) {
@@ -1388,6 +1394,8 @@ u32 interact_player(struct MarioState* m, UNUSED u32 interactType, struct Object
         take_damage_and_knock_back(m2, m->marioObj);
         bounce_back_from_attack(m, interaction);
         m2->interactObj = NULL;
+
+        smlua_call_event_hooks_mario_params(HOOK_ON_PVP_ATTACK, m, m2);
         return FALSE;
     }
 

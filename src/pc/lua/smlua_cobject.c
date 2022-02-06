@@ -48,6 +48,8 @@ bool smlua_valid_lot(u16 lot) {
 }
 
 static int smlua__get_field(lua_State* L) {
+    if (!smlua_functions_valid_param_count(L, 3)) { return 0; }
+
     enum LuaObjectType lot = smlua_to_integer(L, 1);
     if (!gSmLuaConvertSuccess) { return 0; }
 
@@ -59,27 +61,32 @@ static int smlua__get_field(lua_State* L) {
 
     if (pointer == 0) {
         LOG_LUA("_get_field on null pointer");
+        smlua_logline();
         return 0;
     }
 
     if (!smlua_valid_lot(lot)) {
         LOG_LUA("_get_field on invalid LOT '%u'", lot);
+        smlua_logline();
         return 0;
     }
 
     if (!smlua_cobject_allowlist_contains(lot, pointer)) {
         LOG_LUA("_get_field received a pointer not in allow list. '%u', '%llu", lot, (u64)pointer);
+        smlua_logline();
         return 0;
     }
 
     struct LuaObjectField* data = smlua_get_object_field(lot, key);
     if (data == NULL) {
         LOG_LUA("_get_field on invalid key '%s', lot '%d'", key, lot);
+        smlua_logline();
         return 0;
     }
 
     u8* p = ((u8*)pointer) + data->valueOffset;
     switch (data->valueType) {
+        case LVT_BOOL:       lua_pushboolean(L, *(u8* )p);              break;
         case LVT_U8:         lua_pushinteger(L, *(u8* )p);              break;
         case LVT_U16:        lua_pushinteger(L, *(u16*)p);              break;
         case LVT_U32:        lua_pushinteger(L, *(u32*)p);              break;
@@ -89,8 +96,11 @@ static int smlua__get_field(lua_State* L) {
         case LVT_F32:        lua_pushnumber( L, *(f32*)p);              break;
         case LVT_COBJECT:    smlua_push_object(L, data->lot, p);        break;
         case LVT_COBJECT_P:  smlua_push_object(L, data->lot, *(u8**)p); break;
+        case LVT_STRING:     lua_pushstring(L, (char*)p);               break;
+        case LVT_STRING_P:   lua_pushstring(L, *(char**)p);             break;
         default:
             LOG_LUA("_get_field on unimplemented type '%d', key '%s'", data->valueType, key);
+            smlua_logline();
             return 0;
     }
 
@@ -98,6 +108,8 @@ static int smlua__get_field(lua_State* L) {
 }
 
 static int smlua__set_field(lua_State* L) {
+    if (!smlua_functions_valid_param_count(L, 4)) { return 0; }
+
     enum LuaObjectType lot = smlua_to_integer(L, 1);
     if (!gSmLuaConvertSuccess) { return 0; }
 
@@ -109,32 +121,38 @@ static int smlua__set_field(lua_State* L) {
 
     if (pointer == 0) {
         LOG_LUA("_set_field on null pointer");
+        smlua_logline();
         return 0;
     }
 
     if (!smlua_valid_lot(lot)) {
         LOG_LUA("_set_field on invalid LOT '%u'", lot);
+        smlua_logline();
         return 0;
     }
 
     if (!smlua_cobject_allowlist_contains(lot, pointer)) {
         LOG_LUA("_set_field received a pointer not in allow list. '%u', '%llu", lot, (u64)pointer);
+        smlua_logline();
         return 0;
     }
 
     struct LuaObjectField* data = smlua_get_object_field(lot, key);
     if (data == NULL) {
         LOG_LUA("_set_field on invalid key '%s'", key);
+        smlua_logline();
         return 0;
     }
 
     if (data->immutable) {
         LOG_LUA("_set_field on immutable key '%s'", key);
+        smlua_logline();
         return 0;
     }
 
     u8* p = ((u8*)pointer) + data->valueOffset;
     switch (data->valueType) {
+        case LVT_BOOL:*(u8*) p = smlua_to_boolean(L, -1); break;
         case LVT_U8:  *(u8*) p = smlua_to_integer(L, -1); break;
         case LVT_U16: *(u16*)p = smlua_to_integer(L, -1); break;
         case LVT_U32: *(u32*)p = smlua_to_integer(L, -1); break;
@@ -144,10 +162,12 @@ static int smlua__set_field(lua_State* L) {
         case LVT_F32: *(f32*)p = smlua_to_number(L, -1);  break;
         default:
             LOG_LUA("_set_field on unimplemented type '%d', key '%s'", data->valueType, key);
+            smlua_logline();
             return 0;
     }
     if (!gSmLuaConvertSuccess) {
         LOG_LUA("_set_field failed to retrieve value type '%d', key '%s'", data->valueType, key);
+        smlua_logline();
         return 0;
     }
 
@@ -166,6 +186,17 @@ void smlua_cobject_init_globals(void) {
             lua_settable(L, t);
         }
         lua_setglobal(L, "gMarioStates");
+    }
+
+    {
+        lua_newtable(L);
+        int t = lua_gettop(gLuaState);
+        for (int i = 0; i < MAX_PLAYERS; i++) {
+            lua_pushinteger(L, i);
+            smlua_push_object(L, LOT_NETWORKPLAYER, &gNetworkPlayers[i]);
+            lua_settable(L, t);
+        }
+        lua_setglobal(L, "gNetworkPlayers");
     }
 
     {

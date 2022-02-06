@@ -30,11 +30,12 @@ build/us_pc/src/game/camera.o: src/game/camera.c include/ultra64.h \
  src/game/object_list_processor.h src/game/paintings.h \
  src/pc/configfile.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
- src/pc/network/../cliopts.h src/pc/network/../platform.h \
- src/game/bettercamera.inc.h src/game/camera.h src/game/level_update.h \
- src/game/print.h src/game/segment2.h src/game/save_file.h \
- src/game/bettercamera.h build/us_pc/include/text_strings.h \
+ src/pc/network/network_utils.h src/pc/network/packets/packet.h \
+ src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
+ src/pc/network/../platform.h src/game/bettercamera.inc.h \
+ src/game/camera.h src/game/level_update.h src/game/print.h \
+ src/game/segment2.h src/game/save_file.h src/game/bettercamera.h \
+ build/us_pc/include/text_strings.h \
  build/us_pc/include/text_menu_strings.h \
  src/pc/controller/controller_mouse.h src/pc/controller/controller_api.h \
  src/game/behaviors/intro_peach.inc.c \
@@ -125,6 +126,7 @@ src/pc/configfile.h:
 src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

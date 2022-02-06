@@ -59,6 +59,11 @@ enum PacketType {
     PACKET_DOWNLOAD_REQUEST,
     PACKET_DOWNLOAD,
 
+    PACKET_LUA_SYNC_TABLE_REQUEST,
+    PACKET_LUA_SYNC_TABLE,
+
+    PACKET_NETWORK_PLAYERS_REQUEST,
+
     ///
     PACKET_CUSTOM = 255,
 };
@@ -97,6 +102,26 @@ struct Packet {
 enum KickReasonType {
     EKT_CLOSE_CONNECTION,
     EKT_FULL_PARTY,
+};
+
+struct LSTNetworkType {
+    enum {
+        LST_NETWORK_TYPE_INTEGER,
+        LST_NETWORK_TYPE_NUMBER,
+        LST_NETWORK_TYPE_BOOLEAN,
+        LST_NETWORK_TYPE_STRING,
+        LST_NETWORK_TYPE_NIL,
+        LST_NETWORK_TYPE_MAX
+    } type;
+
+    union {
+        long long integer;
+        double number;
+        u8 boolean;
+        char* string;
+    } value;
+
+    size_t size;
 };
 
 // packet.c
@@ -210,7 +235,9 @@ void network_send_save_set_flag(s32 fileIndex, s32 courseIndex, u8 courseStars, 
 void network_receive_save_set_flag(struct Packet* p);
 
 // packet_network_players.c
-void network_send_network_players(void);
+void network_send_network_players_request(void);
+void network_receive_network_players_request(struct Packet* p);
+void network_send_network_players(u8 exceptLocalIndex);
 void network_receive_network_players(struct Packet* p);
 
 // packet_death.c
@@ -301,5 +328,11 @@ void network_receive_download_request(struct Packet* p);
 void network_send_download(u16 clientIndex, u16 serverIndex, u64 offset);
 void network_receive_download(struct Packet* p);
 
+// packet_lua_sync_table.c
+void network_send_lua_sync_table_request(void);
+void network_receive_lua_sync_table_request(struct Packet* p);
+
+void network_send_lua_sync_table(u8 toLocalIndex, u64 seq, u16 remoteIndex, u16 lntKeyCount, struct LSTNetworkType* lntKey, struct LSTNetworkType* lntValue);
+void network_receive_lua_sync_table(struct Packet* p);
 
 #endif

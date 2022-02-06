@@ -17,15 +17,16 @@ build/us_pc/src/pc/lua/smlua_cobject_autogen.o: \
  src/pc/lua/smlua_cobject_allowlist.h src/pc/lua/smlua_cobject_autogen.h \
  src/pc/lua/smlua_utils.h src/pc/lua/smlua_functions.h \
  src/pc/lua/smlua_functions_autogen.h src/pc/lua/smlua_hooks.h \
- src/pc/debuglog.h src/pc/network/network.h \
+ src/pc/lua/smlua_sync_table.h src/pc/debuglog.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h include/types.h src/game/area.h \
- src/game/camera.h src/game/area.h src/engine/geo_layout.h \
- src/game/memory.h include/macros.h src/engine/graph_node.h \
- include/level_table.h levels/level_defines.h src/game/camera.h \
- src/engine/surface_collision.h
+ src/pc/configfile.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h include/types.h \
+ src/game/area.h src/game/camera.h src/game/area.h \
+ src/engine/geo_layout.h src/game/memory.h include/macros.h \
+ src/engine/graph_node.h include/level_table.h levels/level_defines.h \
+ src/game/camera.h src/engine/surface_collision.h \
+ src/pc/network/network_player.h
 src/pc/lua/smlua.h:
 lib/lua/include/lua.h:
 lib/lua/include/luaconf.h:
@@ -74,11 +75,13 @@ src/pc/lua/smlua_utils.h:
 src/pc/lua/smlua_functions.h:
 src/pc/lua/smlua_functions_autogen.h:
 src/pc/lua/smlua_hooks.h:
+src/pc/lua/smlua_sync_table.h:
 src/pc/debuglog.h:
 src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:
@@ -95,3 +98,4 @@ include/level_table.h:
 levels/level_defines.h:
 src/game/camera.h:
 src/engine/surface_collision.h:
+src/pc/network/network_player.h:

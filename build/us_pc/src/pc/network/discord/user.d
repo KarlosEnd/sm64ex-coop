@@ -15,6 +15,7 @@ build/us_pc/src/pc/network/discord/user.o: src/pc/network/discord/user.c \
  include/macros.h include/platform_info.h src/game/characters.h \
  src/pc/network/version.h src/pc/network/discord/../network_player.h \
  src/pc/network/discord/../network.h src/pc/configfile.h \
+ src/pc/network/discord/../network_utils.h \
  src/pc/network/discord/../packets/packet.h \
  src/pc/utils/string_linked_list.h src/pc/network/discord/../../cliopts.h \
  src/pc/network/discord/../../platform.h src/pc/logfile.h \
@@ -61,6 +62,7 @@ src/pc/network/version.h:
 src/pc/network/discord/../network_player.h:
 src/pc/network/discord/../network.h:
 src/pc/configfile.h:
+src/pc/network/discord/../network_utils.h:
 src/pc/network/discord/../packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/discord/../../cliopts.h:

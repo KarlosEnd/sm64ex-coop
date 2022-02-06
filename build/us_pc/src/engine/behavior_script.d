@@ -24,9 +24,10 @@ build/us_pc/src/engine/behavior_script.o: src/engine/behavior_script.c \
  src/game/object_list_processor.h src/engine/graph_node.h \
  src/engine/surface_collision.h src/pc/network/network.h \
  src/pc/network/network_player.h src/pc/network/network.h \
- src/pc/configfile.h src/pc/network/packets/packet.h \
- src/pc/utils/string_linked_list.h src/pc/network/../cliopts.h \
- src/pc/network/../platform.h src/game/rng_position.h
+ src/pc/configfile.h src/pc/network/network_utils.h \
+ src/pc/network/packets/packet.h src/pc/utils/string_linked_list.h \
+ src/pc/network/../cliopts.h src/pc/network/../platform.h \
+ src/game/rng_position.h
 include/ultra64.h:
 include/PR/ultratypes.h:
 include/PR/os_exception.h:
@@ -97,6 +98,7 @@ src/pc/network/network.h:
 src/pc/network/network_player.h:
 src/pc/network/network.h:
 src/pc/configfile.h:
+src/pc/network/network_utils.h:
 src/pc/network/packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/../cliopts.h:

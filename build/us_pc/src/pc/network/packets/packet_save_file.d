@@ -14,6 +14,7 @@ build/us_pc/src/pc/network/packets/packet_save_file.o: \
  include/macros.h include/platform_info.h src/game/characters.h \
  src/pc/network/version.h src/pc/network/packets/../network_player.h \
  src/pc/network/packets/../network.h src/pc/configfile.h \
+ src/pc/network/packets/../network_utils.h \
  src/pc/network/packets/../packets/packet.h \
  src/pc/utils/string_linked_list.h src/pc/network/packets/../../cliopts.h \
  src/pc/network/packets/../../platform.h src/game/save_file.h \
@@ -60,6 +61,7 @@ src/pc/network/version.h:
 src/pc/network/packets/../network_player.h:
 src/pc/network/packets/../network.h:
 src/pc/configfile.h:
+src/pc/network/packets/../network_utils.h:
 src/pc/network/packets/../packets/packet.h:
 src/pc/utils/string_linked_list.h:
 src/pc/network/packets/../../cliopts.h:
