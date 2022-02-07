@@ -1,4 +1,4 @@
--- name: Character Movesets
+-- name: My Movesets
 -- incompatible: moveset
 -- description: Gives each character unique abilities and stats.
 
@@ -437,7 +437,7 @@ gEventTable[CT_WALUIGI] = {
 ----------
 --TAILS---
 ----------
-
+tCountFly = 1
 function tails_before_phys_step(m)
     local e = gStateExtras[m.playerIndex]
 
@@ -501,7 +501,7 @@ function tails_update(m)
 
     -- air scuttle
     e.scuttle = 0
-    local shouldScuttle = (m.action == ACT_JUMP or m.action == ACT_DOUBLE_JUMP) and ((m.controller.buttonDown & A_BUTTON) ~= 0 and m.vel.y < -5)
+    local shouldScuttle = (m.action == ACT_JUMP or m.action == ACT_DOUBLE_JUMP) and ((m.controller.buttonDown & A_BUTTON) ~= 0 and m.vel.y < -5 and tCountFly > 0)
     if shouldScuttle then
         -- prevent wing flutter from glitching out while scuttling
         if (m.flags & MARIO_WING_CAP) ~= 0 then
@@ -542,6 +542,9 @@ gEventTable[5] = {
 --SONIC--
 
 local multy = 1.0
+
+local Scount = -1.0
+local soFast = false
 function sonic_before_phys_step(m)
     local e = gStateExtras[m.playerIndex]
 
@@ -604,7 +607,6 @@ end
 
 function sonic_update(m)
     local e = gStateExtras[m.playerIndex]
-		
     -- air scuttle
     e.scuttle = 0
     local shouldScuttle = (m.action == ACT_JUMP or m.action == ACT_DOUBLE_JUMP) and ((m.controller.buttonDown & A_BUTTON) ~= 0 and m.vel.y < -5)
@@ -614,13 +616,13 @@ function sonic_update(m)
             m.vel.y = m.vel.y + 1
         else
             m.vel.y = m.vel.y + 3
-            set_mario_animation(m, MARIO_ANIM_RUNNING_UNUSED)
+            set_mario_animation(m, MARIO_ANIM_FORWARD_FLIP	)
             set_anim_to_frame(m, e.animFrame)
             e.animFrame = e.animFrame + 10
             if e.animFrame >= m.marioObj.header.gfx.animInfo.curAnim.loopEnd then
                 e.animFrame = e.animFrame - m.marioObj.header.gfx.animInfo.curAnim.loopEnd
             end
-            e.scuttle = 1
+            e.scuttle = 0
         end
     end
 
@@ -635,22 +637,104 @@ function sonic_update(m)
         set_mario_action(m, ACT_TWIRLING, 1)
     end
 	
-	if (m.controller.buttonDown & Z_TRIG) ~= 0 and (m.action == ACT_WALKING ) then
-		if multy < 2.5 then
-	   multy = multy + 0.2
-	   end	
-	   mario_set_forward_vel(m, 100)
-	   else
-	   if multy > 1.0 then
-	   multy = multy - 0.2
-	   end
+	if (m.controller.buttonDown & Z_TRIG) ~= 0 and (m.action == ACT_WALKING ) and soFast == true then
+		
+			Scount = Scount + 1
+			djui_chat_message_create(tostring(Scount))
+			if multy < 2.5 then
+				multy = multy + 0.2
+			else
+				multy = 2.5
+			end	
+			mario_set_forward_vel(m, 100)
+
+	   
+	else
+		if multy > 1.0 then
+			multy = multy - 0.2
+		else
+			multy = 1.0
+		end
+		if Scount > -1 then
+		Scount = Scount - 0.5
+		djui_chat_message_create(tostring(Scount))
+		end
     end
+	
+	if Scount < 0 then
+	soFast = true
+	else if Scount > 100 then
+	soFast = false
+	end
+	end
+end
+
+function sonic_update2(m)
+    local e = gStateExtras[m.playerIndex]
+    -- air scuttle
+    e.scuttle = 0
+    local shouldScuttle = (m.action == ACT_JUMP or m.action == ACT_DOUBLE_JUMP) and ((m.controller.buttonDown & A_BUTTON) ~= 0 and m.vel.y < -5)
+    if shouldScuttle then
+        -- prevent wing flutter from glitching out while scuttling
+        if (m.flags & MARIO_WING_CAP) ~= 0 then
+            m.vel.y = m.vel.y + 1
+        else
+            m.vel.y = m.vel.y + 3
+            set_mario_animation(m, MARIO_ANIM_FORWARD_FLIP	)
+            set_anim_to_frame(m, e.animFrame)
+            e.animFrame = e.animFrame + 10
+            if e.animFrame >= m.marioObj.header.gfx.animInfo.curAnim.loopEnd then
+                e.animFrame = e.animFrame - m.marioObj.header.gfx.animInfo.curAnim.loopEnd
+            end
+            e.scuttle = 0
+        end
+    end
+
+    -- twirl pound
+    if m.action == ACT_TWIRLING and (m.input & INPUT_Z_PRESSED) ~= 0 then
+        set_mario_action(m, ACT_SPIN_POUND, 0)
+    end
+
+    -- backflip turns into twirl
+    if m.action == ACT_BACKFLIP and m.marioObj.header.gfx.animInfo.animFrame > 18 then
+        m.angleVel.y = 0x1800
+        set_mario_action(m, ACT_TWIRLING, 1)
+    end
+	djui_chat_message_create(tostring(multy))
+	if (m.controller.buttonDown & Z_TRIG) ~= 0 and ((m.action == ACT_WALKING ) or (m.action == ACT_JUMP )) then --and soFast == true then
+		
+			Scount = Scount + 1
+			if multy < 2.5 then
+				multy = multy + 0.005
+			else
+				multy = 2.5
+			end	
+			mario_set_forward_vel(m, 50)
+
+	   
+	else
+		if multy > 1.0 then
+			multy = multy - 0.2
+		else
+			multy = 1.0
+		end
+		if Scount > -1 then
+		Scount = Scount - 0.5
+		end
+    end
+	
+	if Scount < 0 then
+	soFast = true
+	else if Scount > 100 then
+	soFast = false
+	end
+	end
 end
 
 gEventTable[4] = {
     before_phys_step = sonic_before_phys_step,
     on_set_action    = sonic_on_set_action,
-    update           = sonic_update,
+    update           = sonic_update2,
 }
 
 ----------
