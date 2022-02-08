@@ -501,23 +501,28 @@ function tails_update(m)
 
     -- air scuttle
     e.scuttle = 0
-    local shouldScuttle = (m.action == ACT_JUMP or m.action == ACT_DOUBLE_JUMP) and ((m.controller.buttonDown & A_BUTTON) ~= 0 and m.vel.y < -5 and tCountFly > 0)
+    local shouldScuttle = ((m.controller.buttonDown & A_BUTTON) ~= 0)
     if shouldScuttle then
-        -- prevent wing flutter from glitching out while scuttling
-        if (m.flags & MARIO_WING_CAP) ~= 0 then
-            m.vel.y = m.vel.y + 1
-        else
-            m.vel.y = m.vel.y + 4
-			m.vel.x = m.vel.x * 2
-			m.vel.z = m.vel.z * 2
-            set_mario_animation(m, MARIO_ANIM_WING_CAP_FLY)
-            set_anim_to_frame(m, e.animFrame)
-            e.animFrame = e.animFrame + 1
-            if e.animFrame >= m.marioObj.header.gfx.animInfo.curAnim.loopEnd then
-                e.animFrame = e.animFrame - m.marioObj.header.gfx.animInfo.curAnim.loopEnd
-            end
-            e.scuttle = 1
-        end
+		if tCountFly < 50 then
+			tCountFly = tCountFly + 1
+			-- prevent wing flutter from glitching out while scuttling
+			if (m.flags & MARIO_WING_CAP) ~= 0 then
+				m.vel.y = m.vel.y + 1
+			else
+				m.vel.y = m.vel.y + 1
+				m.vel.x = m.vel.x * 3
+				m.vel.z = m.vel.z * 3
+			--	set_mario_animation(m, MARIO_ANIM_WING_CAP_FLY)
+			--	set_anim_to_frame(m, e.animFrame)
+			--	e.animFrame = e.animFrame + 1
+			--	if e.animFrame >= m.marioObj.header.gfx.animInfo.curAnim.loopEnd then
+			--		e.animFrame = e.animFrame - m.marioObj.header.gfx.animInfo.curAnim.loopEnd
+			--	end
+				e.scuttle = 1
+			end
+		end
+	else
+		tCountFly = 0
     end
 
     -- twirl pound
